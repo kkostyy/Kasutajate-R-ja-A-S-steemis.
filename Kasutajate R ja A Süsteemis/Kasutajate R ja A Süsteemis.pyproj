@@ -4,7 +4,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e2ac1405-648f-4b35-9d0d-86fa9bc3cbf4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Kasutajate_R_ja_A_Süsteemis.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +22,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Kasutajate_R_ja_A_Süsteemis.py" />
+    <Compile Include="Tavalinefaill.py" />
+    <Compile Include="MyModule.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
