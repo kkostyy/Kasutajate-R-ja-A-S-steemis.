@@ -1,6 +1,5 @@
 import random
 import string
-import os
 
 NIMI_FAIL = "k.txt"
 PAROOL_FAIL = "s.txt"
@@ -8,24 +7,31 @@ PAROOL_FAIL = "s.txt"
 def lae_andmed():
     kasutajad = []
     paroolid = []
-    if os.path.exists(NIMI_FAIL):
-        f = open(NIMI_FAIL, "r", encoding="utf-8")
+    try:
+        f = open(NIMI_FAIL, "r")
         for rida in f:
             kasutajad.append(rida.strip())
         f.close()
-    if os.path.exists(PAROOL_FAIL):
-        f = open(PAROOL_FAIL, "r", encoding="utf-8")
+    except FileNotFoundError:
+        pass
+
+    try:
+        f = open(PAROOL_FAIL, "r")
         for rida in f:
             paroolid.append(rida.strip())
         f.close()
+    except FileNotFoundError:
+        pass
+
     return kasutajad, paroolid
 
+
 def salvesta_andmed(kasutajad, paroolid):
-    f = open(NIMI_FAIL, "w", encoding="utf-8")
+    f = open(NIMI_FAIL, "w")
     for nimi in kasutajad:
         f.write(nimi + "\n")
     f.close()
-    f = open(PAROOL_FAIL, "w", encoding="utf-8")
+    f = open(PAROOL_FAIL, "w")
     for parool in paroolid:
         f.write(parool + "\n")
     f.close()
