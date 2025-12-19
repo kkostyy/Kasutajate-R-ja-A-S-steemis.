@@ -24,6 +24,14 @@
   <ItemGroup>
     <Compile Include="Tavalinefaill.py" />
     <Compile Include="MyModule.py" />
+    <Compile Include="With files\MyModule.py" />
+    <Compile Include="With files\Tavalinefaill.py" />
+    <Compile Include="Without files\MyModule2.py" />
+    <Compile Include="Without files\Tavalinefaill2.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="With files\" />
+    <Folder Include="Without files\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
