@@ -1,40 +1,11 @@
 import random
 import string
 
-NIMI_FAIL = "k.txt"
-PAROOL_FAIL = "s.txt"
-
 def lae_andmed():
     kasutajad = []
     paroolid = []
-    try:
-        f = open(NIMI_FAIL, "r")
-        for rida in f:
-            kasutajad.append(rida.strip())
-        f.close()
-    except FileNotFoundError:
-        pass
-
-    try:
-        f = open(PAROOL_FAIL, "r")
-        for rida in f:
-            paroolid.append(rida.strip())
-        f.close()
-    except FileNotFoundError:
-        pass
-
     return kasutajad, paroolid
 
-
-def salvesta_andmed(kasutajad, paroolid):
-    f = open(NIMI_FAIL, "w")
-    for nimi in kasutajad:
-        f.write(nimi + "\n")
-    f.close()
-    f = open(PAROOL_FAIL, "w")
-    for parool in paroolid:
-        f.write(parool + "\n")
-    f.close()
 
 def registreeri(kasutajad, paroolid):
     nimi = input("Sisesta kasutajanimi: ")
@@ -63,14 +34,16 @@ def registreeri(kasutajad, paroolid):
     else:
         print("Vale valik!")
         return
+
     kasutajad.append(nimi)
     paroolid.append(parool)
-    salvesta_andmed(kasutajad, paroolid)
     print("Registreerimine õnnestus!")
+
 
 def logi_sisse(kasutajad, paroolid):
     nimi = input("Sisesta kasutajanimi: ")
     parool = input("Sisesta parool: ")
+
     if nimi in kasutajad:
         idx = kasutajad.index(nimi)
         if paroolid[idx] == parool:
@@ -80,23 +53,26 @@ def logi_sisse(kasutajad, paroolid):
     else:
         print("Sellist kasutajat pole!")
 
+
 def muuda_andmeid(kasutajad, paroolid):
     vana = input("Sisesta vana kasutajanimi: ")
     if vana not in kasutajad:
         print("Kasutajat ei leitud!")
         return
+
     idx = kasutajad.index(vana)
     print("1 – Muuda nime")
     print("2 – Muuda parooli")
     v = input("Valik: ")
+
     if v == "1":
         uus = input("Sisesta uus nimi: ")
         if uus not in kasutajad:
             kasutajad[idx] = uus
-            salvesta_andmed(kasutajad, paroolid)
             print("Nimi muudetud!")
         else:
             print("Nimi on juba kasutusel!")
+
     elif v == "2":
         while True:
             uus = input("Sisesta uus parool: ")
@@ -106,22 +82,23 @@ def muuda_andmeid(kasutajad, paroolid):
             special = any(c in ".,:;!_*-+()/#¤%&" for c in uus)
             if num and lower and upper and special:
                 paroolid[idx] = uus
-                salvesta_andmed(kasutajad, paroolid)
                 print("Parool muudetud!")
                 break
             print("Parool ei vasta nõuetele!")
+
 
 def taasta_parool(kasutajad, paroolid):
     nimi = input("Sisesta oma kasutajanimi: ")
     if nimi not in kasutajad:
         print("Kasutajat ei leitud!")
         return
+
     idx = kasutajad.index(nimi)
     parool = ""
     kõik = ".,:;!_*-+()/#¤%&0123456789" + string.ascii_letters
+
     for i in range(12):
         parool += random.choice(kõik)
-    paroolid[idx] = parool
-    salvesta_andmed(kasutajad, paroolid)
-    print("Sinu uus parool:", parool)
 
+    paroolid[idx] = parool
+    print("Sinu uus parool:", parool)
