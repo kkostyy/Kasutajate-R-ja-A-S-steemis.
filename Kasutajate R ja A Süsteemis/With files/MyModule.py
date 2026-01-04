@@ -126,3 +126,6 @@ def taasta_parool(kasutajad, paroolid):
     salvesta_andmed(kasutajad, paroolid)
     print("Sinu uus parool:", parool)
 
+    ###
+    ###
+
